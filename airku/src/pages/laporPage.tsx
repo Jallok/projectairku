@@ -2,10 +2,9 @@ import Image from "next/image";
 import LaporForm from "@/components/form/laporForm";
 
 export default function Lapor() {
- 
   return (
-    <div className="container">
-      <div className="sm:mt-[92px] h-16 sm:h-72 relative">
+    <div className="w-full">
+      <div className="mt-[92px] h-[277px] relative">
         <Image
           src="/assets/Hero-lapor.png"
           alt="Hero-Profile"
@@ -13,12 +12,14 @@ export default function Lapor() {
           className="object-cover"
         />
       </div>
+
       <div className="w-[896px] flex flex-col justify-start gap-5 mt-[100px] mx-auto">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-greenBase">
             KEJADIAN APA YANG BISA ANDA LAPORKAN?
           </h1>
         </div>
+
         <div className="flex justify-between">
           <div className="pt-8">
             <Image
@@ -32,6 +33,7 @@ export default function Lapor() {
               KEBOCORAN PADA SALURAN AIR
             </p>
           </div>
+
           <div className="pt-8">
             <Image
               src="/assets/Rectangle38.png"
@@ -44,6 +46,7 @@ export default function Lapor() {
               SALURAN AIR TERSUMBAT
             </p>
           </div>
+
           <div className="pt-8">
             <Image
               src="/assets/Rectangle39.png"

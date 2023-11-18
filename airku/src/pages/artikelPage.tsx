@@ -16,7 +16,7 @@ export default function Artikel() {
   ];
   return (
     <div className="container">
-      <div className="sm:mt-[92px] h-16 sm:h-72 relative">
+      <div className="mt-[92px] w-full h-[277px] relative">
         <Image
           src="/assets/Hero-Artikel.png"
           alt="Hero-Artikel"
@@ -24,19 +24,16 @@ export default function Artikel() {
           className="object-cover"
         />
       </div>
-      <div className="mt-[22px] ml-[560px] w-[371px] h-[102px] flex-col justify-start items-center gap-[15px] inline-flex">
-        <h1 className="text-neutral-600 text-4xl font-semibold">KATEGORI</h1>
-        <div className="flex gap-6 items-center py-2">
+
+      <div className="mt-[22px] ml-[560px] w-[371px] flex-col justify-start items-center gap-[15px] inline-flex">
+        <div>
+          <h1 className="text-neutral-600 text-4xl font-semibold">KATEGORI</h1>
+        </div>
+        <div className="flex gap-[22px] items-center py-2">
           {kategories.map((kategori, index) => (
             <Link
               key={index}
-              className={classnames({
-                "text-greenBase border-b-2 pb-3 border-greenBase":
-                  kategori.text === currentPath,
-                "text-gray-400": kategori.text !== currentPath,
-                "border-b-2 pb-3 hover:text-greenBase hover:border-greenBase transition-colors":
-                  true,
-              })}
+              className="text-gray-400 border-b-2 pb-3 border-greenBase hover:text-greenBase hover:border-greenBase transition-colors"
               href={kategori.text}
             >
               {kategori.text}
@@ -44,7 +41,7 @@ export default function Artikel() {
           ))}
         </div>
       </div>
-      <div className="mt-[98px] mx-[100px]">
+      <div className="w-[1240px] mx-auto mt-[60px]">
         <div className="grid grid-cols-4 gap-[50px]">
           <CardArtikel
             src="/assets/gambar.png"

@@ -15,11 +15,9 @@ const menus = [
 
 export default function Home() {
   return (
-    <div className="container bg-yellow-400 mt-[300px]">
+    <div className="bg-yellow-400 mt-[300px]">
       <div>
         <p>helllo</p>
-        
-
       </div>
     </div>
   );

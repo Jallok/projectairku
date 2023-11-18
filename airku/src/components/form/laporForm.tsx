@@ -61,7 +61,7 @@ export default function LaporForm() {
   };
 
   return (
-    <div className="w-[1030px] mt-[104px] mx-auto">
+    <div className="w-[1040px] mt-[104px] mx-auto">
       <h1 className="text-2xl text-neutral-700 font-medium text-center mb-2 ">
         DATA LAPOR
       </h1>

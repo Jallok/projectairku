@@ -5,7 +5,7 @@ import React from "react";
 export default function Donasi() {
   return (
     <div className="container">
-      <div className="sm:mt-[92px] h-16 sm:h-72 relative">
+      <div className="mt-[92px] w-full h-[277px] relative">
         <Image
           src="/assets/Hero-donasi.png"
           alt="Hero-Profile"
