@@ -7,7 +7,7 @@ type cardInfoTipe = {
   title: string;
 };
 
-export default function Navbar(props:cardInfoTipe) {
+export default function CardInfo(props:cardInfoTipe) {
   return (
     <div
       className=" bg-white h-[191px] w-[350px] flex flex-col justify-center items-center  bg-no-repeat bg-auto bg-right-bottom rounded-lg ) "

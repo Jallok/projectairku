@@ -15,7 +15,7 @@ const menus = [
 export default function Header() {
   const currentPath = usePathname();
   return (
-    <div className="w-full h-[98px] fixed top-0 bg-background z-10 shadow-md shadow-black">
+    <div className="w-full h-[98px] fixed top-0 bg-background z-50 shadow-md shadow-black">
       <div className="flex justify-between items-center mt-[23px]">
         <div className="ml-[100px] justify-center items-center gap-[17px] inline-flex">
           <Link href="/" className="flex gap-2">
