@@ -18,7 +18,7 @@ export default function Footer() {
   ];
 
   return (
-    <div className="w-full flex flex-col justify-between items-center bg-background mt-[109px] h-[468px] shrink-0">
+    <div className="w-full flex flex-col justify-between items-center bg-background h-[468px] shrink-0">
       <div className="h-[267px] mt-[100px] justify-start items-start gap-[88px] inline-flex">
         <div className="h-[253px] flex-col justify-start items-start gap-[35px] inline-flex w-[339px]">
           <div className="inline-flex items-center gap-[17px]">

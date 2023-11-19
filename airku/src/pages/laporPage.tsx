@@ -3,8 +3,8 @@ import LaporForm from "@/components/form/laporForm";
 
 export default function Lapor() {
   return (
-    <div className="w-full">
-      <div className="mt-[92px] h-[277px] relative">
+    <div className="w-full mb-[100px]">
+      <div className="mt-[98px] h-[277px] relative">
         <Image
           src="/assets/Hero-lapor.png"
           alt="Hero-Profile"

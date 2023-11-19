@@ -1,23 +1,12 @@
 import CardArtikel from "@/components/card/CardArtikel";
 import CardInfo from "@/components/card/CardInfo";
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
 import Image from "next/image";
 import Link from "next/link";
-import { BiLogInCircle } from "react-icons/bi";
 import { SlCursor } from "react-icons/sl";
 import { RiHandCoinFill } from "react-icons/ri";
 import { GiWallet } from "react-icons/gi";
 import { PiWarningOctagonFill } from "react-icons/pi";
 import Artikel from "@/components/data/ArtikelHome.json";
-
-const menus = [
-  { link: "/", text: "Home" },
-  { link: "/profile", text: "Profile" },
-  { link: "/artikel", text: "Artikel" },
-  { link: "/lapor", text: "Lapor" },
-  { link: "/donasi", text: "Donasi" },
-];
 
 export default function Home() {
   return (
@@ -73,7 +62,12 @@ export default function Home() {
       {/* --2-- */}
       <div className="mt-[100px] flex gap-[63px] h-[438px] w-[1240px] m-auto">
         <div className=" w-[580px] h-[435px] rounded-lg relative">
-          <Image src="/assets/hero4.png" alt="" fill className="w-[580px] h-[435px]" />
+          <Image
+            src="/assets/hero4.png"
+            alt=""
+            fill
+            className="w-[580px] h-[435px]"
+          />
         </div>
         <div>
           <h1 className="text-teal-600 flex font-bold">About us</h1>
@@ -121,27 +115,29 @@ export default function Home() {
       </div>
       {/* --3-- */}
       <div
-        className="h-[720px] bg-cover bg-center flex flex-col justify-center items-center "
-        style={{ backgroundImage: "url('/bg2.jpg')" }}
+        className="h-[720px] bg-cover bg-center mt-[100px] flex flex-col justify-center items-center "
+        style={{ backgroundImage: "url('/assets/bg2.jpg')" }}
       >
         <div className="flex justify-center gap-5 items-center">
-        <CardInfo
-          src={"/assets/people.png"}
-          angka={"20 Orang"}
-          title={"Total Pendonasi"}
-        />
-        <CardInfo
-          src={"/assets/wallet.png"}
-          angka={"Rp.28.525.000.-"}
-          title={"Total Donasi"}
-        />
-        <CardInfo
-          src={"/assets/map.png"}
-          angka={"8 Wilayah"}
-          title={"Tujuan Donasi"}
-        />
+          <CardInfo
+            src={"/assets/people.png"}
+            angka={"20 Orang"}
+            title={"Total Pendonasi"}
+          />
+          <CardInfo
+            src={"/assets/wallet.png"}
+            angka={"Rp.28.525.000.-"}
+            title={"Total Donasi"}
+          />
+          <CardInfo
+            src={"/assets/map.png"}
+            angka={"8 Wilayah"}
+            title={"Tujuan Donasi"}
+          />
         </div>
-        <h1 className="mt-12 mb-2 flex w-2/3 justify-start text-white">Total Donasi</h1>
+        <h1 className="mt-12 mb-2 flex w-2/3 justify-start text-white">
+          Total Donasi
+        </h1>
         <div className="h-4 relative overflow-hidden w-2/3 rounded-full ">
           <div className="w-full h-full bg-gray-200 absolute"></div>
           <div className="h-full w-[65%] bg-teal-600 absolute"></div>
@@ -152,13 +148,13 @@ export default function Home() {
       </div>
       {/* --4-- */}
       <div>
-        <div className="w-[1240px] h-[628px] m-auto flex flex-col justify-center items-center">
+        <div className="w-[1240px] h-[628px] m-auto mt-[100px] flex flex-col justify-center items-center">
           <h1 className="text-3xl font-bold">
             Bagaimana Cara Berdonasi di Web Kami ?
           </h1>
           <div className="gap-[40px] mt-[45px] flex">
             <div className="w-[650px] h-[540px] relative">
-              <Image src={"/assets/cara-berdonasi.jpg"} alt="" fill/>
+              <Image src={"/assets/cara-berdonasi.jpg"} alt="" fill />
             </div>
             <div className="h-[550px] w-[550px] relative">
               <Image src={"/assets/hero5.png"} alt="" fill />
@@ -167,7 +163,7 @@ export default function Home() {
         </div>
       </div>
       {/* --5-- */}
-      <div className="bg-[#23272e] h-[600px] px-[100px] pb-[120px]">
+      <div className="bg-[#23272e] mt-[100px] h-[600px] px-[100px] pb-[120px]">
         <h1 className="mt-[47px] text-white text-6xl font-bold">
           Artikel Dan Berita Terkini
         </h1>
@@ -185,7 +181,7 @@ export default function Home() {
       </div>
       {/* --6-- */}
       <div className="h-[222px] relative flex justify-center">
-        <div className="h-[178px] w-[1024px] bg-teal-600 absolute -bottom-[75px] rounded-lg shadow-xl flex items-center justify-between px-[50px]">
+        <div className="h-[178px] w-[1024px] bg-teal-600 absolute -bottom-[55px] rounded-lg shadow-xl flex items-center justify-between px-[50px]">
           <h1 className="font-bold text-5xl text-gray-100 border-r-4 border-gray-400 pr-5">
             MORE PEOPLE <br /> MORE IMPACT
           </h1>

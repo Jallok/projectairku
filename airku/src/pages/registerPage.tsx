@@ -1,9 +1,39 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import React from 'react'
-import { BsGoogle } from 'react-icons/bs'
+import FormInput from "@/components/form/FormInput";
+import Image from "next/image";
+import Link from "next/link";
+import React, { FormEvent, useState } from "react";
+import { BsGoogle } from "react-icons/bs";
+import registerValidation from "@/validations/registerValidation";
+
+type RegisterType = {
+  nama: string;
+  email: string;
+  password: string;
+  rePassword: string;
+};
 
 export default function RegisterPage() {
+  const [register, setRegister] = useState<RegisterType[]>([]);
+  const [validationMsg, setValidationMsg] = useState<any>(null);
+
+  function handleSubmit(e: FormEvent) {
+    e.preventDefault();
+    const formElement = e.target as HTMLFormElement;
+    const formData = new FormData(formElement);
+    const formDataJson = Object.fromEntries(formData.entries()) as RegisterType;
+
+    const validate = registerValidation.safeParse(formDataJson);
+    if (validate.success === false) {
+      console.log(validate.error.flatten().fieldErrors);
+      return setValidationMsg(validate.error.flatten().fieldErrors);
+    }
+
+    setValidationMsg(null);
+    const temp = [...register];
+    temp.push(formDataJson);
+    setRegister(temp);
+    console.log(register);
+  }
   return (
     <div
       className="h-screen w-screen mt-[100px] flex justify-center bg-bottom bg-no-repeat bg-[length:100%_200px]"
@@ -17,42 +47,38 @@ export default function RegisterPage() {
           <h1 className="text-4xl mb-[30px] font-bold w-[450px] ">
             Sign Up Airku
           </h1>
-          <form className="flex flex-col">
-            <h1>Nama*</h1>
-            <input
+          <form onSubmit={handleSubmit} className="flex flex-col">
+            <FormInput
+              label="Nama"
               type="text"
-              name=""
-              id=""
+              id="nama"
+              validation={validationMsg?.nama}
               placeholder="Enter Your Name"
-              className="border-2 w-full h-[32px] rounded-md p-2 mb-[15px]"
             />
-            <h1>Email*</h1>
-            <input
+            <FormInput
+              label="Email"
               type="email"
-              name=""
-              id=""
+              id="email"
+              validation={validationMsg?.email}
               placeholder="Enter Your Email"
-              className="border-2 w-full h-[32px] rounded-md p-2 mb-[15px]"
             />
-            <h1>Password*</h1>
-            <input
+            <FormInput
+              label="Password"
               type="password"
-              name=""
-              id=""
+              id="password"
+              validation={validationMsg?.password}
               placeholder="********"
-              className="border-2 w-full h-[32px] rounded-md p-2 mb-[15px]"
             />
-            <h1>Ulangi Password*</h1>
-            <input
+            <FormInput
+              label="Ulangi Password"
               type="password"
-              name=""
-              id=""
+              id="rePassword"
+              validation={validationMsg?.rePassword}
               placeholder="********"
-              className="border-2 w-full h-[32px] rounded-md p-2 mb-[15px]"
             />
             <button
               type="submit"
-              className="w-full bg-teal-600 rounded-md text-white py-[7px] mb-[15px]"
+              className="w-full bg-teal-600 rounded-md text-white py-[7px] my-[15px] hover:bg-teal-700 transition-colors"
             >
               Sign Up
             </button>
@@ -74,7 +100,7 @@ export default function RegisterPage() {
           </div>
           <Link
             href={"#"}
-            className="w-full border-2 border-blue-700 px-[7px] text-blue-700 flex justify-center items-center rounded-full mt-4 mb-5 p-1 gap-2"
+            className="w-full border-2 border-blue-700 px-[7px] text-blue-700 flex justify-center items-center rounded-full mt-4 mb-5 p-1 gap-2 hover:bg-teal-600 hover:text-white hover:border-teal-600 transition-colors"
           >
             {" "}
             <BsGoogle />
@@ -82,12 +108,15 @@ export default function RegisterPage() {
           </Link>
           <div className="flex w-full justify-center">
             <h1>Sudah Punya Akun ? </h1>
-            <Link href={"/loginPage"} className="text-teal-600">
+            <Link
+              href={"/loginPage"}
+              className="text-teal-600 hover:text-teal-700 hover:underline transition-colors"
+            >
               Login Di Sini
             </Link>
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }

@@ -15,8 +15,8 @@ export default function Artikel() {
     { text: "Artikel" },
   ];
   return (
-    <div className="container">
-      <div className="mt-[92px] w-full h-[277px] relative">
+    <div className="w-full mb-[100px]">
+      <div className="mt-[98px] w-full h-[277px] relative">
         <Image
           src="/assets/Hero-Artikel.png"
           alt="Hero-Artikel"

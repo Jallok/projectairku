@@ -1,9 +1,38 @@
+import FormInput from "@/components/form/FormInput";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { FormEvent, useState } from "react";
 import { BsGoogle } from "react-icons/bs";
+import laporValidation from "@/validations/laporValidation";
+import loginValidation from "@/validations/loginValidation";
+
+type LoginType = {
+  email: string;
+  password: string;
+};
 
 export default function LoginPage() {
+  const [login, setLogin] = useState<LoginType[]>([]);
+  const [validationMsg, setValidationMsg] = useState<any>(null);
+
+  function handleSubmit(e: FormEvent) {
+    e.preventDefault();
+    const formElement = e.target as HTMLFormElement;
+    const formData = new FormData(formElement);
+    const formDataJson = Object.fromEntries(formData.entries()) as LoginType;
+
+    const validate = loginValidation.safeParse(formDataJson);
+    if (validate.success === false) {
+      console.log(validate.error.flatten().fieldErrors);
+      return setValidationMsg(validate.error.flatten().fieldErrors);
+    }
+
+    setValidationMsg(null);
+    const temp = [...login];
+    temp.push(formDataJson);
+    setLogin(temp);
+    console.log(login);
+  }
   return (
     <div className=" flex h-screen justify-between">
       <div
@@ -20,33 +49,35 @@ export default function LoginPage() {
         style={{ backgroundImage: "url('/assets/bg-login2.jpg')" }}
       >
         <h1 className="text-5xl mb-[30px] font-bold w-[450px] ">Login Airku</h1>
-        <form className="flex flex-col">
-          <h1>Email</h1>
-          <input
-            type="email"
-            name=""
-            id=""
-            placeholder="masbudi@gmail.com"
-            className="border-2 w-[450px] h-[32px] rounded-md p-2 mb-[15px]"
-          />
-          <h1>Password</h1>
-          <input
-            type="password"
-            name=""
-            id=""
-            placeholder="********"
-            className="border-2 w-[450px] h-[32px] rounded-md p-2 mb-[15px]"
-          />
+        <form onSubmit={handleSubmit} className="flex flex-col">
+          <div>
+            <FormInput
+              label="Email"
+              type="email"
+              id="email"
+              validation={validationMsg?.email}
+              placeholder="masbudi@gmail.com"
+            />
+          </div>
+          <div>
+            <FormInput
+              label="Password"
+              type="password"
+              id="password"
+              validation={validationMsg?.password}
+              placeholder="********"
+            />
+          </div>
           <button
             type="submit"
-            className="w-[450px] bg-teal-600 rounded-md text-white py-[7px] mb-[15px]"
+            className="w-[450px] bg-teal-600 rounded-md text-white py-[7px] my-[15px] hover:bg-teal-700 transition-colors"
           >
             Login
           </button>
         </form>
         <Link
           href={"/resetPasswordPage"}
-          className="text-teal-600 w-[450px] flex justify-end mb-[30px] "
+          className="text-teal-600 w-[450px] flex justify-end mb-[30px] hover:text-teal-700 hover:underline transition-colors"
         >
           Lupa password ?
         </Link>
@@ -57,7 +88,7 @@ export default function LoginPage() {
         </div>
         <Link
           href={"#"}
-          className="w-[450px] border-2 border-blue-700 px-[7px] text-blue-700 flex justify-center items-center rounded-xl mt-4 mb-5 p-2 gap-2"
+          className="w-[450px] border-2 border-blue-700 px-[7px] text-blue-700 flex justify-center items-center rounded-xl my-4 p-2 gap-2 hover:bg-teal-600 hover:text-white hover:border-teal-600 transition-colors"
         >
           {" "}
           <BsGoogle />
@@ -65,7 +96,10 @@ export default function LoginPage() {
         </Link>
         <div className="flex w-[450px] justify-center">
           <h1>Belum Punya Akun ?</h1>
-          <Link href={"/registerPage"} className="text-teal-600">
+          <Link
+            href={"/registerPage"}
+            className="text-teal-600 hover:text-teal-700 hover:underline transition-colors"
+          >
             Daftar Di Sini
           </Link>
         </div>

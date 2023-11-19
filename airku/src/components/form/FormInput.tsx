@@ -12,7 +12,7 @@ type PropsType = {
 export default function FormInput(props: PropsType) {
   return (
     <div className="relative">
-      <label htmlFor="" className="text-neutral-950 ml-2">
+      <label htmlFor="" className="text-neutral-950">
         {props.label}
       </label>
       <div>

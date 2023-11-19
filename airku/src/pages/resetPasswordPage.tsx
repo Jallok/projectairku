@@ -1,7 +1,37 @@
+import FormInput from "@/components/form/FormInput";
 import Image from "next/image";
-import React from "react";
+import React, { FormEvent, useState } from "react";
+import resetPasswordValidation from "@/validations/restepasswordvalidation";
+
+type ResetPasswrdType = {
+  email: string;
+  password: string;
+};
 
 export default function ResetPasswordPage() {
+  const [resetPassword, setResetPassword] = useState<ResetPasswrdType[]>([]);
+  const [validationMsg, setValidationMsg] = useState<any>(null);
+
+  function handleSubmit(e: FormEvent) {
+    e.preventDefault();
+    const formElement = e.target as HTMLFormElement;
+    const formData = new FormData(formElement);
+    const formDataJson = Object.fromEntries(
+      formData.entries()
+    ) as ResetPasswrdType;
+
+    const validate = resetPasswordValidation.safeParse(formDataJson);
+    if (validate.success === false) {
+      console.log(validate.error.flatten().fieldErrors);
+      return setValidationMsg(validate.error.flatten().fieldErrors);
+    }
+
+    setValidationMsg(null);
+    const temp = [...resetPassword];
+    temp.push(formDataJson);
+    setResetPassword(temp);
+    console.log(resetPassword);
+  }
   return (
     <div
       className="h-screen  w-screen flex justify-center mt-5 bg-bottom bg-no-repeat bg-[length:100%_200px]"
@@ -16,34 +46,32 @@ export default function ResetPasswordPage() {
           <h2 className="mb-4 text-xs">
             Your new password must be different from previous used passwords.
           </h2>
-          <form className="flex flex-col">
-            <h1>Email*</h1>
-            <input
+          <form onSubmit={handleSubmit} className="flex flex-col">
+            <FormInput
+              label="Email"
               type="email"
-              name=""
-              id=""
-              placeholder="Enter Your Name"
-              className="border-2 w-full h-[32px] rounded-md p-2 mb-[15px]"
+              id="email"
+              validation={validationMsg?.email}
+              placeholder="Enter Your Email"
             />
-            <h1>Password*</h1>
-            <input
+            <FormInput
+              label="Password"
               type="password"
-              name=""
-              id=""
+              id="password"
+              validation={validationMsg?.password}
               placeholder="********"
-              className="border-2 w-full h-[32px] rounded-md p-2 mb-[15px]"
             />
-            <h1>Confirm New Password*</h1>
-            <input
+            <FormInput
+              label="Confirm New Password"
               type="password"
-              name=""
-              id=""
+              id="password"
+              validation={validationMsg?.rePassword}
               placeholder="********"
-              className="border-2 w-full h-[32px] rounded-md p-2 mb-[15px]"
             />
+
             <button
               type="submit"
-              className="w-full bg-teal-600 rounded-md text-white py-[7px] mb-[15px]"
+              className="w-full bg-teal-600 rounded-md text-white py-[7px] my-[15px] hover:bg-teal-700 transition-colors"
             >
               Reset
             </button>

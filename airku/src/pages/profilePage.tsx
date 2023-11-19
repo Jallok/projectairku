@@ -7,8 +7,8 @@ import Footer from "@/components/Footer";
 
 export default function Profile() {
   return (
-    <div className="w-full">
-      <div className="mt-[92px] h-[277px] relative">
+    <div className="w-full mb-[100px]">
+      <div className="mt-[98px] h-[277px] relative">
         <Image
           src="/assets/Hero-profile.png"
           alt="Hero-Profile"
