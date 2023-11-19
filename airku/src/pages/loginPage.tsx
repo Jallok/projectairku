@@ -45,7 +45,7 @@ export default function LoginPage() {
           </button>
         </form>
         <Link
-          href={"#"}
+          href={"/resetPasswordPage"}
           className="text-teal-600 w-[450px] flex justify-end mb-[30px] "
         >
           Lupa password ?
@@ -65,7 +65,7 @@ export default function LoginPage() {
         </Link>
         <div className="flex w-[450px] justify-center">
           <h1>Belum Punya Akun ?</h1>
-          <Link href={"/register"} className="text-teal-600">
+          <Link href={"/registerPage"} className="text-teal-600">
             Daftar Di Sini
           </Link>
         </div>

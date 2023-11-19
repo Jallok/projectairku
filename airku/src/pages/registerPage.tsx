@@ -6,7 +6,7 @@ import { BsGoogle } from 'react-icons/bs'
 export default function RegisterPage() {
   return (
     <div
-      className="h-screen w-screen mt-[100px] flex justify-center mt-5 bg-bottom bg-no-repeat bg-[length:100%_200px]"
+      className="h-screen w-screen mt-[100px] flex justify-center bg-bottom bg-no-repeat bg-[length:100%_200px]"
       style={{ backgroundImage: "url('/assets/bg-regist.jpg')" }}
     >
       <div className="h-[540px] w-[1110px] flex justify-between">
@@ -82,7 +82,7 @@ export default function RegisterPage() {
           </Link>
           <div className="flex w-full justify-center">
             <h1>Sudah Punya Akun ? </h1>
-            <Link href={"/login"} className="text-teal-600">
+            <Link href={"/loginPage"} className="text-teal-600">
               Login Di Sini
             </Link>
           </div>
