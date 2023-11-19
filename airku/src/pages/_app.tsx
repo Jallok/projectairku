@@ -8,8 +8,8 @@ import { useRouter } from 'next/router';
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
   const currentPath = router.pathname;
-  const hideFooter = currentPath === "/loginPage"; // Tentukan path sesuai kebutuhan Anda
-  const hideHeader = currentPath === "/loginPage";
+  const hideFooter = currentPath === "/loginPage" || currentPath === "/registerPage";
+  const hideHeader = currentPath === "/loginPage" || currentPath === "/registerPage";
 
   return (
     <Layout hideFooter={hideFooter} hideHeader={hideHeader}>
@@ -17,3 +17,4 @@ export default function App({ Component, pageProps }: AppProps) {
     </Layout>
   );
 }
+
