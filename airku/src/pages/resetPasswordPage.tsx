@@ -1,7 +1,7 @@
 import FormInput from "@/components/form/FormInput";
 import Image from "next/image";
 import React, { FormEvent, useState } from "react";
-import resetPasswordValidation from "@/validations/restepasswordvalidation";
+import resetPasswordValidation from "@/validations/resetPasswordValidation";
 
 type ResetPasswrdType = {
   email: string;
@@ -46,7 +46,7 @@ export default function ResetPasswordPage() {
           <h2 className="mb-4 text-xs">
             Your new password must be different from previous used passwords.
           </h2>
-          <form onSubmit={handleSubmit} className="flex flex-col">
+          <form onSubmit={handleSubmit} className="flex flex-col gap-2">
             <FormInput
               label="Email"
               type="email"
@@ -55,20 +55,19 @@ export default function ResetPasswordPage() {
               placeholder="Enter Your Email"
             />
             <FormInput
-              label="Password"
+              label="New Password"
               type="password"
-              id="password"
-              validation={validationMsg?.password}
+              id="resetPassword"
+              validation={validationMsg?.resetPassword}
               placeholder="********"
             />
             <FormInput
               label="Confirm New Password"
               type="password"
-              id="password"
+              id="rePassword"
               validation={validationMsg?.rePassword}
               placeholder="********"
             />
-
             <button
               type="submit"
               className="w-full bg-teal-600 rounded-md text-white py-[7px] my-[15px] hover:bg-teal-700 transition-colors"
