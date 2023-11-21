@@ -16,6 +16,10 @@ export default function CardName({ nama, role, desc }: CardNameType) {
     <div
       className="h-[253px] w-[395px] bg-white bg-no-repeat bg-right-bottom p-[25px] rounded-lg shadow-sm shadow-slate-900 hover:scale-105 transition-all"
       style={{ backgroundImage: "url('/assets/airku-card.png')" }}
+      data-aos="flip-up"
+      data-aos-offset="150"
+      data-aos-easing="ease-in-sine"
+      data-aos-duration="1000"
     >
       <div className="flex items-center gap-[25px]">
         <div className="relative rounded-full h-16 w-16 ">

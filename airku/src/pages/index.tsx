@@ -7,8 +7,17 @@ import { RiHandCoinFill } from "react-icons/ri";
 import { GiWallet } from "react-icons/gi";
 import { PiWarningOctagonFill } from "react-icons/pi";
 import Artikel from "@/components/data/ArtikelHome.json";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 export default function Home() {
+  useEffect(() => {
+    AOS.init({
+      once: true,
+    });
+  }, []);
+
   return (
     <div className="flex flex-col gap-5 mt-[98px]">
       {/* --1--- */}
@@ -61,7 +70,13 @@ export default function Home() {
       </div>
       {/* --2-- */}
       <div className="mt-[100px] flex gap-[63px] h-[438px] w-[1240px] m-auto">
-        <div className=" w-[580px] h-[435px] rounded-lg relative">
+        <div
+          className=" w-[580px] h-[435px] rounded-lg relative"
+          data-aos="fade-right"
+          data-aos-offset="300"
+          data-aos-easing="ease-in-sine"
+          data-aos-duration="1000"
+        >
           <Image
             src="/assets/hero4.png"
             alt=""
@@ -69,7 +84,12 @@ export default function Home() {
             className="w-[580px] h-[435px]"
           />
         </div>
-        <div>
+        <div
+          data-aos="fade-left"
+          data-aos-offset="300"
+          data-aos-easing="ease-in-sine"
+          data-aos-duration="1000"
+        >
           <h1 className="text-teal-600 flex font-bold">About us</h1>
           <h2 className="text-3xl font-bold mb-[16px] mt-[8px]">
             Hanya dengan Saling Membantu Satu Sama Lain Kita Dapat Membuat Dunia
@@ -123,6 +143,7 @@ export default function Home() {
             src={"/assets/people.png"}
             angka={"20 Orang"}
             title={"Total Pendonasi"}
+            data-aos="flip-up"
           />
           <CardInfo
             src={"/assets/wallet.png"}
@@ -153,10 +174,20 @@ export default function Home() {
             Bagaimana Cara Berdonasi di Web Kami ?
           </h1>
           <div className="gap-[40px] mt-[45px] flex">
-            <div className="w-[650px] h-[540px] relative">
+            <div
+              className="w-[650px] h-[540px] relative"
+              data-aos="fade-up-right"
+              data-aos-duration="1000"
+              data-aos-offset="300"
+            >
               <Image src={"/assets/cara-berdonasi.jpg"} alt="" fill />
             </div>
-            <div className="h-[550px] w-[550px] relative">
+            <div
+              className="h-[550px] w-[550px] relative"
+              data-aos="zoom-in-up"
+              data-aos-duration="1000"
+              data-aos-offset="300"
+            >
               <Image src={"/assets/hero5.png"} alt="" fill />
             </div>
           </div>
@@ -180,7 +211,8 @@ export default function Home() {
         </div>
       </div>
       {/* --6-- */}
-      <div className="h-[222px] relative flex justify-center">
+      <div className="h-[222px] relative flex justify-center" data-aos="fade-up" data-aos-duration="1000"
+              data-aos-offset="300">
         <div className="h-[178px] w-[1024px] bg-teal-600 absolute -bottom-[55px] rounded-lg shadow-xl flex items-center justify-between px-[50px]">
           <h1 className="font-bold text-5xl text-gray-100 border-r-4 border-gray-400 pr-5">
             MORE PEOPLE <br /> MORE IMPACT
