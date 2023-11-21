@@ -11,7 +11,13 @@ type cardArtikelTipe = {
 
 export default function CardArtikel(props: cardArtikelTipe) {
   return (
-    <div className="bg-background w-[280px] p-[15px] rounded-lg border hover:scale-105 transition-all">
+    <div
+      className="bg-background w-[280px] p-[15px] rounded-lg border hover:scale-105 transition-all"
+      data-aos="flip-left"
+      data-aos-offset="300"
+      data-aos-easing="ease-in-sine"
+      data-aos-duration="1000"
+    >
       <div className="relative rounded-lg h-[122px] w-[250px]">
         <Image src={props.src} alt="" fill className="bg-teal-600 rounded-lg" />
       </div>

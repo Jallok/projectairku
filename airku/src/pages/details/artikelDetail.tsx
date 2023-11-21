@@ -1,6 +1,7 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function ArtikelDetail() {
   return (
@@ -99,24 +100,28 @@ export default function ArtikelDetail() {
       </div>
       <div className="w-[1040px] mx-auto flex justify-between items-center mt-[25px] ">
         <div className="flex text-center">
-          <Image
-            src="/assets/arrow_back.svg"
-            alt="back"
-            width={100}
-            height={100}
-            className="w-[24px] h-[25px]"
-          />
-          <p className="text-indigo-700">Artikel Sebelumnya</p>
+          <Link href="" className="flex text-center">
+            <Image
+              src="/assets/arrow_back.svg"
+              alt="back"
+              width={100}
+              height={100}
+              className="w-[24px] h-[25px]"
+            />
+            <p className="text-indigo-700">Artikel Sebelumnya</p>
+          </Link>
         </div>
-        <div className="flex text-center">
-          <p className="text-indigo-700">Artikel Selanjutnya</p>
-          <Image
-            src="/assets/arrow_forward.svg"
-            alt="back"
-            width={100}
-            height={100}
-            className="w-[24px] h-[25px]"
-          />
+        <div>
+          <Link href="" className="flex text-center">
+            <p className="text-indigo-700">Artikel Selanjutnya</p>
+            <Image
+              src="/assets/arrow_forward.svg"
+              alt="back"
+              width={100}
+              height={100}
+              className="w-[24px] h-[25px]"
+            />
+          </Link>
         </div>
       </div>
     </div>

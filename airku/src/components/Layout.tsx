@@ -3,7 +3,6 @@
 import React, { ReactNode } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
-import { useRouter } from "next/router";
 
 type ChildrenType = {
   children: ReactNode;
