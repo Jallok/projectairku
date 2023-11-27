@@ -51,7 +51,7 @@ export default function Header() {
           ))}
           <div className="flex items-center gap-2 bg-greenBase px-3 py-3 text-lg rounded-lg text-white font-medium hover:translate-x-1 transition-all">
             <BiLogIn />
-            <Link href="/donasi">Donasi Sekarang</Link>
+            <Link href="/loginPage">Login</Link>
           </div>
         </div>
       </div>

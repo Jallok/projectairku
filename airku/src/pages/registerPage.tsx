@@ -4,6 +4,8 @@ import Link from "next/link";
 import React, { FormEvent, useState } from "react";
 import { BsGoogle } from "react-icons/bs";
 import registerValidation from "@/validations/registerValidation";
+import axios from "axios";
+import { useRouter } from "next/navigation";
 
 type RegisterType = {
   nama: string;
@@ -13,30 +15,47 @@ type RegisterType = {
 };
 
 export default function RegisterPage() {
-  const [register, setRegister] = useState<RegisterType[]>([]);
+  const router = useRouter();
+  const [agreed, setAgreed] = useState(false);
   const [validationMsg, setValidationMsg] = useState<any>(null);
 
-  function handleSubmit(e: FormEvent) {
+  async function handleSubmit(e: FormEvent) {
     e.preventDefault();
     const formElement = e.target as HTMLFormElement;
     const formData = new FormData(formElement);
-    const formDataJson = Object.fromEntries(formData.entries()) as RegisterType;
 
+    const password = formData.get("password");
+    const rePassword = formData.get("rePassword");
+    if (password !== rePassword) {
+      return setValidationMsg({ matchPassword: "Password Tidak Cocok" });
+    }
+
+    if (!agreed) {
+      setValidationMsg({ agreed: "Please agree to the Terms and Conditions" });
+      return;
+    }
+
+    const formDataJson = Object.fromEntries(formData.entries()) as RegisterType;
     const validate = registerValidation.safeParse(formDataJson);
     if (validate.success === false) {
       console.log(validate.error.flatten().fieldErrors);
       return setValidationMsg(validate.error.flatten().fieldErrors);
     }
 
-    setValidationMsg(null);
-    const temp = [...register];
-    temp.push(formDataJson);
-    setRegister(temp);
-    console.log(register);
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/api/register",
+        formDataJson
+      );
+      router.push("/loginPage");
+      setValidationMsg(null);
+    } catch (error) {
+      console.log(error);
+    }
   }
   return (
     <div
-      className="h-screen w-screen mt-[100px] flex justify-center bg-bottom bg-no-repeat bg-[length:100%_200px]"
+      className="h-screen w-screen mt-[50px] flex justify-center bg-bottom bg-no-repeat bg-[length:100%_200px]"
       style={{ backgroundImage: "url('/assets/bg-regist.jpg')" }}
     >
       <div className="h-[540px] w-[1110px] flex justify-between">
@@ -44,10 +63,8 @@ export default function RegisterPage() {
           <Image src={"/assets/ilustrasi-regist.png"} alt="" fill />
         </div>
         <div className="h-[540px] w-[400px] ">
-          <h1 className="text-4xl mb-[30px] font-bold w-[450px] ">
-            Sign Up Airku
-          </h1>
-          <form onSubmit={handleSubmit} className="flex flex-col">
+          <h1 className="text-4xl mb-4 font-bold w-[450px] ">Sign Up Airku</h1>
+          <form onSubmit={handleSubmit} className="flex flex-col gap-2">
             <FormInput
               label="Nama"
               type="text"
@@ -76,20 +93,29 @@ export default function RegisterPage() {
               validation={validationMsg?.rePassword}
               placeholder="********"
             />
+            {validationMsg?.matchPassword && (
+              <p className="text-red-500 animate-bounce">{validationMsg.matchPassword}</p>
+            )}
             <button
               type="submit"
-              className="w-full bg-teal-600 rounded-md text-white py-[7px] my-[15px] hover:bg-teal-700 transition-colors"
+              className="w-full bg-teal-600 rounded-md text-white py-[7px] mt-[15px] hover:bg-teal-700 transition-colors"
             >
               Sign Up
             </button>
-            <div className="flex items-center gap-2">
-              <input
-                type="checkbox"
-                name=""
-                id=""
-                className="h-4 p-2 mb-[15px]"
-              />
-              <h1 className="-mt-4 ">Agree to Terms and Conditions</h1>
+            <div className="flex flex-col">
+              {validationMsg?.agreed && (
+                <p className="text-red-500 animate-bounce">{validationMsg.agreed}</p>
+              )}
+              <div className="flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  name=""
+                  id=""
+                  onChange={() => setAgreed(!agreed)}
+                  className="h-4 p-2 mb-[15px]"
+                />
+                <h1 className="-mt-4 ">Agree to Terms and Conditions</h1>
+              </div>
             </div>
           </form>
 
