@@ -53,6 +53,7 @@ export default function RegisterPage() {
       console.log(error);
     }
   }
+
   return (
     <div
       className="h-screen w-screen mt-[50px] flex justify-center bg-bottom bg-no-repeat bg-[length:100%_200px]"
@@ -63,8 +64,8 @@ export default function RegisterPage() {
           <Image src={"/assets/ilustrasi-regist.png"} alt="" fill />
         </div>
         <div className="h-[540px] w-[400px] ">
-          <h1 className="text-4xl mb-4 font-bold w-[450px] ">Sign Up Airku</h1>
-          <form onSubmit={handleSubmit} className="flex flex-col gap-2">
+          <h1 className="text-4xl mb-2 font-bold w-[450px] ">Sign Up Airku</h1>
+          <form onSubmit={handleSubmit} className="flex flex-col gap-1">
             <FormInput
               label="Nama"
               type="text"
@@ -94,7 +95,9 @@ export default function RegisterPage() {
               placeholder="********"
             />
             {validationMsg?.matchPassword && (
-              <p className="text-red-500 animate-bounce">{validationMsg.matchPassword}</p>
+              <p className="text-red-500 animate-bounce">
+                {validationMsg.matchPassword}
+              </p>
             )}
             <button
               type="submit"
@@ -104,7 +107,9 @@ export default function RegisterPage() {
             </button>
             <div className="flex flex-col">
               {validationMsg?.agreed && (
-                <p className="text-red-500 animate-bounce">{validationMsg.agreed}</p>
+                <p className="text-red-500 animate-bounce">
+                  {validationMsg.agreed}
+                </p>
               )}
               <div className="flex items-center gap-2">
                 <input

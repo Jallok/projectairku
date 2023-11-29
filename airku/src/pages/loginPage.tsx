@@ -3,8 +3,10 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { FormEvent, useState } from "react";
 import { BsGoogle } from "react-icons/bs";
-import laporValidation from "@/validations/laporValidation";
 import loginValidation from "@/validations/loginValidation";
+import axios from "axios";
+import { useRouter } from "next/navigation";
+import useLoading from "./loading/useLoading";
 
 type LoginType = {
   email: string;
@@ -12,10 +14,12 @@ type LoginType = {
 };
 
 export default function LoginPage() {
-  const [login, setLogin] = useState<LoginType[]>([]);
+  const { showLoading, Loading } = useLoading();
+  const router = useRouter();
   const [validationMsg, setValidationMsg] = useState<any>(null);
 
-  function handleSubmit(e: FormEvent) {
+  async function handleSubmit(e: FormEvent) {
+    showLoading(true, "Login...");
     e.preventDefault();
     const formElement = e.target as HTMLFormElement;
     const formData = new FormData(formElement);
@@ -27,14 +31,22 @@ export default function LoginPage() {
       return setValidationMsg(validate.error.flatten().fieldErrors);
     }
 
-    setValidationMsg(null);
-    const temp = [...login];
-    temp.push(formDataJson);
-    setLogin(temp);
-    console.log(login);
+    try {
+      const res = await axios.post(
+        "http://localhost:3000/api/login",
+        formDataJson
+      );
+      showLoading(false, null);
+      router.push("/");
+      setValidationMsg(null);
+    } catch (error) {
+      showLoading(false, null);
+      console.log(error);
+    }
   }
   return (
     <div className=" flex h-screen justify-between">
+      <Loading />
       <div
         className="w-1/2 h-[100%] bg-cover flex flex-col justify-center items-center  "
         style={{ backgroundImage: "url('/assets/bg-login.jpg')" }}
@@ -70,7 +82,7 @@ export default function LoginPage() {
           </div>
           <button
             type="submit"
-            className="w-[450px] bg-teal-600 rounded-md text-white py-[7px] my-[15px] hover:bg-teal-700 transition-colors"
+            className="w-[450px] bg-teal-600 rounded-md text-white py-[7px] my-[15px] hover:bg-teal-700 transition-colors relative"
           >
             Login
           </button>
