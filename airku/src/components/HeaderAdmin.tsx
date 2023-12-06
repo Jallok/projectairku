@@ -8,14 +8,13 @@ import { FiMenu } from "react-icons/fi";
 import { useState } from "react";
 
 const menus = [
-  { link: "/", text: "Home" },
-  { link: "/profilePage", text: "Profile" },
-  { link: "/artikelPage", text: "Artikel" },
-  { link: "/laporPage", text: "Lapor" },
-  { link: "/donasiPage", text: "Donasi" },
+  { link: "/homeAdmin", text: "Home" },
+  { link: "/artikelAdmin", text: "Data Artikel" },
+  { link: "/artikelPage", text: "Data Lapor" },
+  { link: "/laporPage", text: "Data Donasi" },
 ];
 
-export default function Header() {
+export default function HeaderAdmin() {
   let [open, setopen] = useState(false);
   const currentPath = usePathname();
   return (

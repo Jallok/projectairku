@@ -11,7 +11,7 @@ type LoginType = {
   password: string;
 };
 
-export default function LoginPage() {
+export default function LoginAminPage() {
   const [login, setLogin] = useState<LoginType[]>([]);
   const [validationMsg, setValidationMsg] = useState<any>(null);
 
@@ -48,7 +48,7 @@ export default function LoginPage() {
         className="h-[100%] w-1/2 flex items-center flex-col justify-center m-auto bg-no-repeat bg-[length:100%_150px] bg-bottom"
         style={{ backgroundImage: "url('/assets/bg-login2.jpg')" }}
       >
-        <h1 className="text-5xl mb-[30px] font-bold w-[450px] ">Login Airku</h1>
+        <h1 className="text-5xl mb-[30px] font-bold w-[450px] ">Login Admin Airku</h1>
         <form onSubmit={handleSubmit} className="flex flex-col">
           <div>
             <FormInput
@@ -76,7 +76,7 @@ export default function LoginPage() {
           </button>
         </form>
         <div className="text-teal-600 w-[450px] flex justify-between mb-[30px]a">
-        <Link href={"/loginAdminPage"} className=" hover:text-teal-700 hover:underline transition-colors">Login Sebagai Admin</Link>
+        <Link href={"/loginPage"} className=" hover:text-teal-700 hover:underline transition-colors">Login Sebagai User</Link>
         <Link
           href={"/resetPasswordPage"}
           className=" hover:text-teal-700 hover:underline transition-colors"

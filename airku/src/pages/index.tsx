@@ -14,62 +14,62 @@ import { useEffect } from "react";
 export default function Home() {
   useEffect(() => {
     AOS.init({
-      once: true,
+      // once: true,
     });
   }, []);
 
   return (
-    <div className="flex flex-col gap-5 mt-[98px]">
+    <div className="flex flex-col gap-5 mt-20">
       {/* --1--- */}
       <div
-        className="h-[720px] bg-cover bg-center flex justify-center "
+        className="xl:h-[720px] w-[640px]  h-[572px] lg:w-full md:w-full bg-[length:100%_513px] md:bg-[length:100%_513px] lg:bg-[length:100%_513px] xl:bg-[length:100%_672px] bg-no-repeat pl-8 flex justify-center "
         style={{ backgroundImage: "url('/assets/bg1.jpg')" }}
       >
-        <div className="h-[253px] w-[1240px] flex justify-between mt-[60px]">
-          <div className="w-[651px] ">
-            <h1 className="text-white text-5xl font-bold ">
+        <div className="h-[253px] md:w-full xl:w-[1360px]  flex justify-between mt-[60px]">
+          <div className="xl:w-[700px] w-[300px] lg:w-[457px] md:w-80">
+            <h1 className="text-white xl:text-6xl lg:text-4xl md:text-3xl text-2xl font-bold ">
               BERBAGI AIR <br /> UNTUK MEMBANGUN <br /> MASA DEPAN
             </h1>
-            <h2 className="mt-[25px] text-white">
+            <h2 className="mt-[25px] text-white text-sm xl:text-xl md:text-sm">
               Bersama-sama, kita dapat mengatasi krisis air global dan
               memberikan <br /> masa depan yang lebih baik bagi generasi
               mendatang. <br />
               Mari bergabung dan berdonasi sekarang!
             </h2>
-            <div className="flex gap-[9px] mt-[48px] ">
+            <div className="flex xl:gap-[9px] gap-2 mt-5 xl:mt-[48px] ">
               <Link
                 href={""}
-                className="rounded-lg bg-teal-600 pt-[9.5px] pb-[9.5px] pr-[22.5px] pl-[22.5px] text-white"
+                className="rounded-lg bg-teal-600 py-1 px-2 lg:px-4 lg:py-2 xl:py-[9.5px] xl:px-6 text-sm lg:text-base xl:text-base text-white"
               >
                 Donasi Sekarang{" "}
               </Link>
               <Link
                 href={""}
-                className=" flex items-center gap-2 border-2 border-teal-600 text-teal-600 rounded-lg pt-[9.5px] pb-[9.5px] pr-[22.5px] pl-[22.5px]"
+                className=" flex items-center gap-2 border-2 border-teal-600 text-teal-600 rounded-lg py-1 px-2 xl:py-[9.5px] xl:px-6 "
               >
-                Getting Started <SlCursor />
+                Getting Started <SlCursor /> 
               </Link>
             </div>
-            <div className="flex gap-[9px] mt-[49.5px] text-white">
+            <div className="flex gap-[9px] mt-5 xl:mt-[49.5px]  text-white">
               <h1>Rp.28.525.000,-</h1>
               <h2>Donasi Terkumpul</h2>
             </div>
           </div>
-          <div className="w-[552px] relative">
-            <div className="h-[417px] w-[299px] absolute z-10 top-0 right-0">
+          <div className="w-[310px] xl:w-[552px] lg:w-[461px] relative">
+            <div className="w-32 h-44 md:h-52 md:w-40 lg:h-[240px] lg:w-[189px] xl:h-[417px] xl:w-[299px]  absolute z-10  top-0 right-11 md:right-12 lg:right-16 xl:right-0">
               <Image src="/assets/hero3.png" alt="" fill />
             </div>
-            <div className="h-[315px] w-[284px] absolute z-30 right-[268px]">
+            <div className="h-40 w-32 md:h-48 md:w-40 lg:h-[214px] lg:w-[180px] xl:h-[315px] xl:w-[284px] absolute z-30 top-0 right-[167px] md:right-52 lg:right-60 xl:right-[268px] ">
               <Image src="/assets/hero2.png" alt="" fill />
             </div>
-            <div className="h-[257px] w-[226px] absolute z-20 top-[277px] right-[215px]">
+            <div className="h-28 w-24 md:h-36 md:w-32 lg:h-[170px] lg:w-[150px] xl:h-[257px] xl:w-[226px] absolute z-20 top-36 md:top-40 lg:top-48 right-[130px] md:right-36 lg:right-52 xl:top-[277px] xl:right-[215px]">
               <Image src="/assets/hero1.png" alt="" fill />
             </div>
           </div>
         </div>
       </div>
       {/* --2-- */}
-      <div className="mt-[100px] flex gap-[63px] h-[438px] w-[1240px] m-auto">
+      {/* <div className="mt-[100px] flex max-xl:flex-col gap-[63px] h-[438px] w-[1240px] m-auto">
         <div
           className=" w-[580px] h-[435px] rounded-lg relative"
           data-aos="fade-right"
@@ -84,7 +84,7 @@ export default function Home() {
             className="w-[580px] h-[435px]"
           />
         </div>
-        <div
+        <div className="max lg:w-[580px] "
           data-aos="fade-left"
           data-aos-offset="300"
           data-aos-easing="ease-in-sine"
@@ -132,7 +132,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
       {/* --3-- */}
       <div
         className="h-[720px] bg-cover bg-center mt-[100px] flex flex-col justify-center items-center "
@@ -159,7 +159,13 @@ export default function Home() {
         <h1 className="mt-12 mb-2 flex w-2/3 justify-start text-white">
           Total Donasi
         </h1>
-        <div className="h-4 relative overflow-hidden w-2/3 rounded-full ">
+        <div
+          className="h-4 relative overflow-hidden w-2/3 rounded-full "
+          data-aos="zoom-in-down"
+          data-aos-offset="100"
+          data-aos-easing="ease-in-sine"
+          data-aos-duration="1000"
+        >
           <div className="w-full h-full bg-gray-200 absolute"></div>
           <div className="h-full w-[65%] bg-teal-600 absolute"></div>
         </div>
@@ -168,12 +174,12 @@ export default function Home() {
         </div>
       </div>
       {/* --4-- */}
-      <div>
+      {/* <div>
         <div className="w-[1240px] h-[628px] m-auto mt-[100px] flex flex-col justify-center items-center">
           <h1 className="text-3xl font-bold">
             Bagaimana Cara Berdonasi di Web Kami ?
           </h1>
-          <div className="gap-[40px] mt-[45px] flex">
+          <div className="gap-[40px] mt-[45px] flex max-xl:flex-col">
             <div
               className="w-[650px] h-[540px] relative"
               data-aos="fade-up-right"
@@ -192,13 +198,13 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
       {/* --5-- */}
-      <div className="bg-[#23272e] mt-[100px] h-[600px] px-[100px] pb-[120px]">
+      {/* <div className="bg-[#23272e] mt-[100px] h-[600px] px-[100px] pb-[120px]">
         <h1 className="mt-[47px] text-white text-6xl font-bold">
           Artikel Dan Berita Terkini
         </h1>
-        <div className=" flex justify-between items-center mt-[30px]">
+        <div className=" flex justify-between items-center mt-[30px] max-xl:hidden">
           {Artikel.map((item, index) => (
             <CardArtikel
               src={item.src}
@@ -209,10 +215,14 @@ export default function Home() {
             />
           ))}
         </div>
-      </div>
+      </div> */}
       {/* --6-- */}
-      <div className="h-[222px] relative flex justify-center" data-aos="fade-up" data-aos-duration="1000"
-              data-aos-offset="300">
+      {/* <div
+        className="h-[222px] relative flex justify-center"
+        data-aos="fade-up"
+        data-aos-duration="1000"
+        data-aos-offset="300"
+      >
         <div className="h-[178px] w-[1024px] bg-teal-600 absolute -bottom-[55px] rounded-lg shadow-xl flex items-center justify-between px-[50px]">
           <h1 className="font-bold text-5xl text-gray-100 border-r-4 border-gray-400 pr-5">
             MORE PEOPLE <br /> MORE IMPACT
@@ -230,7 +240,7 @@ export default function Home() {
             </Link>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

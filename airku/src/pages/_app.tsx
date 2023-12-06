@@ -11,11 +11,14 @@ export default function App({ Component, pageProps }: AppProps) {
   const hideFooter =
     currentPath === "/loginPage" ||
     currentPath === "/registerPage" ||
-    currentPath === "/resetPasswordPage";
+    currentPath === "/resetPasswordPage" ||
+    currentPath === "/loginAdminPage";
   const hideHeader =
     currentPath === "/loginPage" ||
     currentPath === "/registerPage" ||
-    currentPath === "/resetPasswordPage";
+    currentPath === "/resetPasswordPage" ||
+    currentPath === "/profileAdminPage" ||
+    currentPath === "/loginAdminPage";
 
   return (
     <Layout hideFooter={hideFooter} hideHeader={hideHeader}>
